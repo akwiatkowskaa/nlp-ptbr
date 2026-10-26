@@ -40,8 +40,9 @@ for topic in topics:
     except Exception as e:
         print(f" [!] Error fetching '{topic}': {e}")
 
-os.makedirs("../data/raw", exist_ok=True)
-output_path = "../data/raw/wiki_raw.txt"
+katalog_projektu = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+output_path = os.path.join(katalog_projektu, "data", "raw", "wiki_raw.txt")
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
 with open(output_path, "w", encoding="utf-8") as f:
     f.write(collected_text)
